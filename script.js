@@ -40,6 +40,7 @@ form.addEventListener('submit', (e) => {
     function clearLocalStorage() {
         localStorage.clear();
         location.reload();
+        
     }
     
     
@@ -60,6 +61,8 @@ form.addEventListener('submit', (e) => {
         </div>
         `;
         document.querySelector('#nbCitations').textContent = quoteList.length;
+        quoteCount = quoteList.length;
+        
     });
 }
 
