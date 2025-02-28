@@ -15,11 +15,12 @@ form.addEventListener('submit', (e) => {
     form.reset();
     });
 
+    //ajouter une citation
     function addQuote(auteur, citation) {
         const quote = document.createElement('div');
         quote.classList.add('quote');
         quote.innerHTML = `
-        <p class="text">${citation}</p>
+        <p class="text">"${citation}"</p>
         <p class="author">${auteur}</p>
         `;
         document.querySelector('#quote-list').appendChild(quote);
@@ -29,18 +30,15 @@ form.addEventListener('submit', (e) => {
         
     }
 
+    //sauvegarder dans le local storage
     function localStorageSave(auteur, citation) {
-    //    let listeSave = localStorage.getItem('quoteList');
-    //    if (!listeSave) {
-    //    quoteList = JSON.parse(listeSave);
-    //    }
-
+   
         quoteList.push({auteur, citation});
         localStorage.setItem('quoteList', JSON.stringify(quoteList));
         console.log(quoteList);
     }
 
-
+//ajouter les citations sauvegardées dans le quotelist
     function addSavedQuotes() {
         const savedQuotes = localStorage.getItem('quoteList');
         if (savedQuotes) {
@@ -52,7 +50,7 @@ form.addEventListener('submit', (e) => {
         });
     }
 
-    addSavedQuotes();
+    //addSavedQuotes();
 
     function clearLocalStorage() {
         localStorage.clear();
@@ -61,3 +59,24 @@ form.addEventListener('submit', (e) => {
     
     boutton = document.querySelector('#delete');
     boutton.addEventListener('click', clearLocalStorage);
+    
+   //clearLocalStorage();
+
+   // charger les citations sauvegardées au demarrage
+   function loadStorage() {
+    loadStorage = localStorage.getItem('quoteList');
+    if (loadStorage) {
+        quoteList = JSON.parse(loadStorage);
+        quoteCount = 0;
+    }
+    quoteList.forEach(quote => {
+        document.querySelector('#quote-list').innerHTML += `
+        <div class="quote">
+        <p class="text">"${quote.citation}"</p>
+        <p class="author">${quote.auteur}</p>
+        </div>
+        `;
+        document.querySelector('#nbCitations').textContent = quoteList.length;
+    });
+}
+loadStorage();
