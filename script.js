@@ -30,9 +30,11 @@ form.addEventListener('submit', (e) => {
     }
 
     function localStorageSave(auteur, citation) {
-        let listeSave = localStorage.getItem('quoteList', JSON.stringify(quoteList));
-       
-        quoteList = JSON.parse(listeSave);
+    //    let listeSave = localStorage.getItem('quoteList');
+    //    if (!listeSave) {
+    //    quoteList = JSON.parse(listeSave);
+    //    }
+
         quoteList.push({auteur, citation});
         localStorage.setItem('quoteList', JSON.stringify(quoteList));
         console.log(quoteList);
