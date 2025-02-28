@@ -8,6 +8,26 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    
+    <h1>Mes Citations</h1>
+    <h2>Gestionnaire de citations en ligne</h2>
+    <h3 id="count">Nombre de citations : <span id="nbCitations">0</span></h3>
+    <hr>
+
+    <form id="formCitation">
+        <label for="auteur">Auteur</label>
+        <input type="text" id="auteur" placeholder="Auteur" required>
+        <label for="citation">Citation</label>
+        <input type="text" id="citation" placeholder="Citation" required>
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <div id="quote-list">
+<div id="quote">
+<p class="text">"On ne naît pas femme, on le devient."</p>
+<p class="author">Simone de Beauvoir</p>
+</div>
+
+
+    </div>
 </body>
 </html>
