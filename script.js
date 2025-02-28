@@ -3,12 +3,8 @@ const auteur = document.querySelector('#auteur');
 const citation = document.querySelector('#citation');
 let auteurValue = '';
 let citationValue = '';
+let quoteList = [];
 let quoteCount = 0;
-let auteurStorage = localStorage.getItem('auteur');
-let citationStorage = localStorage.getItem('citation');
-
-const quoteList = [];
-
 
 //recuperer le contenu des valeurs auteur et citation
 form.addEventListener('submit', (e) => {
@@ -30,55 +26,36 @@ form.addEventListener('submit', (e) => {
         quoteCount += 1;
         document.querySelector('#nbCitations').textContent = quoteCount;
         localStorageSave(auteur, citation);
-
         
-
-        quoteList.forEach((quote, index) => {
-            const quoteDiv = document.createElement('div');
-            index += 1;
-            const nouvelleDiv = document.createElement('div');
-            nouvelleDiv.classList.add('quote');
-            nouvelleDiv.innerHTML = `
-            <p class="text">${quote.citation}</p>
-            <p class="author">${quote.auteur}</p>
-            `;
-            quoteDiv.appendChild(nouvelleDiv);
-            quoteDiv.setAttribute('data-index', index);
-            document.querySelector('#quote-list').appendChild(quoteDiv);
-        });
-
-
     }
 
-   function localStorageSave(auteur, citation) {
-    localStorage.setItem('auteur', auteur);
-    localStorage.setItem('citation', citation);
-    quoteList.push({auteur, citation});
-    localStorage.setItem('quoteList', JSON.stringify(quoteList));
-    console.log(quoteList);
-}
-
-//ajouter les citations sauvegardées dans le quotelist
-
-function addSavedQuotes() {
-    if (auteurStorage && citationStorage) {
-        addQuote(auteurStorage, citationStorage);
+    function localStorageSave(auteur, citation) {
+        let listeSave = localStorage.getItem('quoteList', JSON.stringify(quoteList));
+       
+        quoteList = JSON.parse(listeSave);
+        quoteList.push({auteur, citation});
+        localStorage.setItem('quoteList', JSON.stringify(quoteList));
+        console.log(quoteList);
     }
-    if (localStorage.getItem('quoteList')) {
-        const quoteList = JSON.parse(localStorage.getItem('quoteList'));
+
+
+    function addSavedQuotes() {
+        const savedQuotes = localStorage.getItem('quoteList');
+        if (savedQuotes) {
+            quoteList = JSON.parse(savedQuotes);
+            quoteCount = 0;
+        }
         quoteList.forEach(quote => {
             addQuote(quote.auteur, quote.citation);
         });
     }
-}
 
-// ajouter des citations dans le tableau  en créant des index pour chaque citation
+    addSavedQuotes();
 
-
-
-
-
-
-
-addSavedQuotes();
-
+    function clearLocalStorage() {
+        localStorage.clear();
+        location.reload();
+    }
+    
+    boutton = document.querySelector('#delete');
+    boutton.addEventListener('click', clearLocalStorage);

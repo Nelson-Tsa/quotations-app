@@ -11,6 +11,7 @@
     <h1>Mes Citations</h1>
     <h2>Gestionnaire de citations en ligne</h2>
     <h3 id="count">Nombre de citations : <span id="nbCitations">0</span></h3>
+    
     <hr>
 
     <form id="formCitation">
@@ -18,7 +19,8 @@
         <input type="text" id="auteur" placeholder="Auteur" required>
         <label for="citation">Citation</label>
         <input type="text" id="citation" placeholder="Citation" required>
-        <button type="submit">Ajouter</button>
+        <button type="submit" id="add">Ajouter</button>
+        <button type="button" id="delete">Supprimer</button>
     </form>
 
     <div id="quote-list">

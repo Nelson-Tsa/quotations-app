@@ -1,0 +1,60 @@
+h1{
+    color: rgb(0, 125, 214);
+    font-size: 50px;
+}
+
+h2{
+    color: rgb(111, 157, 186);
+    font-size: 30px;
+}
+
+h3{
+    color: rgb(0, 255, 251);
+    font-size: 20px;
+}
+
+body{
+    background-color: rgb(131, 204, 143);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p{
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+}
+
+#count{
+    font-size: 15px;
+}
+
+#delete{
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(251, 255, 127);
+    border-radius: 5px;
+}
+
+#add{
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(251, 255, 127);
+    border-radius: 5px;
+    
+}
+
+#add:hover{
+    background-color: rgb(0, 0, 0);
+    color: rgb(251, 255, 127);
+    transition: 0.5s;
+    transform: translateY(-2px);
+    transition: ease 0.5s;
+}
+
+#delete:hover{
+    background-color: rgb(0, 0, 0);
+    color: rgb(251, 255, 127);
+    transition: 0.5s;
+    transform: translateY(-2px);
+    transition: ease 0.5s;
+    
+}
