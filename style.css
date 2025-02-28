@@ -58,3 +58,9 @@ p{
     transition: ease 0.5s;
     
 }
+
+label{
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+}
